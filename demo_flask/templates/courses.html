@@ -1,0 +1,57 @@
+<html>
+
+<head>
+   <link href="{{url_for('static', filename='bootstrap.min.css')}}" rel="stylesheet">
+   <link href="{{url_for('static', filename='stylesheet.css')}}" rel="stylesheet">
+   <script src="{{url_for('static', filename='bootstrap.min.js')}}" ></script>
+</head>
+
+<body>
+    <!-- NavBar -->
+    <nav class="navbar navbar-default navbar-expand-lg navbar-light bg-light justify-content-between shadow p-4 mb-3 navbar-fixed-top">
+        <div class="container-fluid">
+            <div style="margin-left: 20px;">
+                <a class="navbar-brand" href="#">Available Courses</a>
+            </div>
+            <div class="navbar-nav" style="margin-right: 20px;">
+                <a class="nav-item nav-link" href="{{ url_for('index') }}">Home</a>
+                <a class="nav-item nav-link" href="{{ url_for('institute') }}">Institutions</a>
+                <a class="nav-item nav-link active" href="{{ url_for('courses') }}">Courses</a>
+                <a class="nav-item nav-link " href="{{ url_for('student') }}">Students</a>
+                <a class="nav-item nav-link" href="{{ url_for('faculty') }}">Faculty</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Body Section -->
+    <section class="container-fluid row" style="justify-content: center;">
+        {%for i in range(0, len)%}
+        <article class="postcard">
+			<a class="postcard__img_link" >
+				<img class="postcard__img" src="{{courselist[i][0]}}" alt="Image Title" />
+			</a>
+			<div class="postcard__text">
+				<h1 class="postcard__title blue">{{courselist[i][1]}}</h1>
+				
+				<div class="postcard__bar"></div>
+				<div class="postcard__preview-txt" style="margin-top: 5px;">
+                    <p style="font-style: italic;">{{courselist[i][2]}}</p>
+                </div>
+            </div>
+		</article>   
+        {%endfor%} 
+    </section>
+
+    <!-- Footer -->
+    <footer class="foot justify-content-between">
+        <h6 style="padding-top:10px;">2021, All Rights Reserved @ Sathyajith K P</h6>
+          <ul>
+              <a href="{{ url_for('contact') }}">About Us</a>
+              <a href="{{ url_for('contact') }}">Contact Us</a>
+              <a href="https://twitter.com/"><img style="background-color: black;" src="/static/icons/twitter.png"/></a>
+              <a href="https://www.instagram.com/accounts/login/"><img style="background-color:black;" src="/static/icons/instagram.jpg"/></a>
+              <a href="https://www.facebook.com/"><img style="background-color:black;" src="/static/icons/facebook.png"/></a>
+            </ul>
+      </footer>
+</body>  
+</html>

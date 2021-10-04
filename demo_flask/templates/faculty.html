@@ -1,0 +1,56 @@
+<html>
+
+<head>
+   <link href="{{url_for('static', filename='bootstrap.min.css')}}" rel="stylesheet">
+   <link href="{{url_for('static', filename='stylesheet.css')}}" rel="stylesheet">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <script src="{{url_for('static', filename='bootstrap.min.js')}}" ></script>
+</head>
+
+<body>
+
+    <!-- NavBar -->
+    <nav class="navbar navbar-default navbar-expand-lg navbar-light bg-light justify-content-between shadow p-4 mb-3 navbar-fixed-top">
+        <div class="container-fluid">
+            <div style="margin-left: 20px;">
+                <a class="navbar-brand" href="#">Our Faculties</a>
+            </div>
+            <div class="navbar-nav" style="margin-right: 20px;">
+                <a class="nav-item nav-link" href="{{ url_for('index') }}">Home</a>
+                <a class="nav-item nav-link" href="{{ url_for('institute') }}">Institutions</a>
+                <a class="nav-item nav-link " href="{{ url_for('courses') }}">Courses</a>
+                <a class="nav-item nav-link " href="{{ url_for('student') }}">Students</a>
+                <a class="nav-item nav-link active" href="{{ url_for('faculty') }}">Faculties</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Body Section -->
+    <section class="container-fluid row" >
+        {%for i in range(0, len)%}
+        <div class="col-md-6 col-lg-4 item">
+            <div class="box">
+                <img class="rounded-circle" src="{{facltylist[i][0]}}" style="height: 200px; width: 200px;">
+                <h3 class="name" style="margin-top: 1rem;justify-content: center;">{{facltylist[i][1]}}</h3>
+                <p class="title" style="justify-content: center;">{{facltylist[i][2]}}</p>
+                <p class="description" style="text-align: justify; font-style: italic;">{{facltylist[i][3]}} </p>
+            </div>
+        </div>
+        {%endfor%}
+    </section>
+
+    <!-- Footer -->
+    <footer class="foot justify-content-between">
+        <h6 style="padding-top:10px;">2021, All Rights Reserved @ Sathyajith K P</h6>
+          <ul>
+              <a href="{{ url_for('contact') }}">About Us</a>
+              <a href="{{ url_for('contact') }}">Contact Us</a>
+              <a href="https://twitter.com/"><img style="background-color: black;" src="/static/icons/twitter.png"/></a>
+              <a href="https://www.instagram.com/accounts/login/"><img style="background-color:black;" src="/static/icons/instagram.jpg"/></a>
+              <a href="https://www.facebook.com/"><img style="background-color:black;" src="/static/icons/facebook.png"/></a>
+            </ul>
+      </footer>
+</body>  
+
+</html>
